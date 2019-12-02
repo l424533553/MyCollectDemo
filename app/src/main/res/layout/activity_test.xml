@@ -8,14 +8,5 @@
     tools:context=".TestActivity">
 
 
-    <Button
-        android:id="@+id/test3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_marginTop="30dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:text="测试" />
 
 </LinearLayout>

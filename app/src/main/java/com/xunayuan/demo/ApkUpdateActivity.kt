@@ -1,9 +1,10 @@
 package com.xunayuan.demo
 
+import android.annotation.SuppressLint
 import android.app.ActivityManager
 import android.content.Context
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
@@ -13,14 +14,13 @@ import com.xuanyuan.library.apk_update.download.DownloadIntentService
 
 /**
  * APK 更新测试
- *
  */
+@SuppressLint("Registered")
 @Suppress("DEPRECATION")
 class ApkUpdateActivity : AppCompatActivity() {
     private val DOWNLOADAPK_ID = 12
 
-    //TODO 拦截器  使用方法
-    //TODO  继承方法
+    //使用结果
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_apk_update)
@@ -48,6 +48,7 @@ class ApkUpdateActivity : AppCompatActivity() {
      *
      * @param className 判断的服务名字
      * @return true 在运行 false 不在运行
+     * 使用情况
      */
     fun isServiceRunning(className: String): Boolean {
         var isRunning = false
@@ -62,6 +63,7 @@ class ApkUpdateActivity : AppCompatActivity() {
                 break
             }
         }
+        
         return isRunning
     }
 }

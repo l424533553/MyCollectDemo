@@ -3,15 +3,13 @@ package com.xunayuan.demo.aspect.aspectj;
 import android.app.Activity;
 import android.app.Service;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.content.ContextCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 
@@ -44,8 +42,6 @@ public class PermissionAspect {
 
         if (object instanceof Activity) {
             context = (Activity) object;
-        } else if (object instanceof FragmentActivity) {
-            context = (FragmentActivity) object;
         } else if (object instanceof Fragment) {
             context = ((Fragment) object).getContext();
         } else if (object instanceof Service) {

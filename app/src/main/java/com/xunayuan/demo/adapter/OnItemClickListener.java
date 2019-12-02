@@ -6,9 +6,6 @@ package com.xunayuan.demo.adapter;
  * 邮件：424533553@qq.com
  * 说明：
  */
-public interface OnItemClickListener {
-
-    void onItemClick();
-
-
+public interface OnItemClickListener<T> {
+    void onItemClick(T t);
 }

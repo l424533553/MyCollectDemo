@@ -11,22 +11,41 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-
+        <activity android:name=".activity.WhatsActivity"></activity>
+        <activity android:name=".activity.view.ViewActivity" />
+        <activity
+            android:name=".activity.ImmersiveActivity"
+            android:theme="@style/Immersive" />
         <activity
             android:name=".TestActivity"
-            android:launchMode="singleInstance" />
+            android:launchMode="standard">
 
-        <activity android:name=".AspectJActivity"/>
-        <activity android:name=".HomeActivity">
+            <!--
+                <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+
+        </activity>
+        <activity android:name=".AspectJActivity" />
+        <activity android:name=".activity.MenuDemoActivity"
+            />
+        <activity
+            android:name=".activity.ImmersiveActivity2"
+            android:theme="@style/Immersive" /> <!-- android:theme="@style/AppTheme.TransparentStausBar" -->
+
+        <activity
+            android:name=".HomeActivity"
+            android:theme="@style/NoBarTheme">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!-- //注册Service服务 -->
-        <service android:name=".MyService"></service>
+        </activity> <!-- //注册Service服务 -->
+        <service android:name=".MyService" />
     </application>
 
 </manifest>

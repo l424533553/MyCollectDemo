@@ -1,31 +1,33 @@
 package com.xunayuan.demo.data;
 
 
+import com.xuanyuan.arrlibrary.room.RoomTestActivity;
 import com.xunayuan.demo.ApkUpdateActivity;
 import com.xunayuan.demo.AspectJActivity;
 import com.xunayuan.demo.TestActivity;
+import com.xunayuan.demo.activity.view.ViewActivity;
 import com.xunayuan.demo.config.IDataConstants;
+import com.xunayuan.demo.config.IIntentConstants;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-//import com.collect.user_luo.mycollect.activity.retrofit_rxjava.RetrofitOrRxjavaActivity;
 
 
-public class HomeData implements IDataConstants {
+public class HomeData implements IDataConstants, IIntentConstants {
 
     /**
      * 获取功能界面
-     *
-     * @return 返回
      */
     public static Map<String, Class> getHomeMapData() {
         Map<String, Class> map = new HashMap<>();
         map.put("测试页面", TestActivity.class);
         map.put("安装更新", ApkUpdateActivity.class);
         map.put("AspectJ", AspectJActivity.class);
+        map.put("View控件", ViewActivity.class);
+        map.put("Room数据库", RoomTestActivity.class);
 
         // 数据功能 测试   
 //        map.put("Sqlite操作", SqliteActivity.class);
@@ -54,12 +56,11 @@ public class HomeData implements IDataConstants {
     }
 
     /**
-     * //
-     * Webmenu 中的数据源
+     * ViewActivity   中的数据源
      */
-    public static Map<String, Class> getWebMapData() {
-        Map<String, Class> map = new HashMap<>();
-//        map.put("WebView测试", WebWhatActivity.class);
+    public static Map<String, String> getViewActivityData() {
+        Map<String, String> map = new HashMap<>();
+        map.put("CheckTextView", INTENT_JUMP2_CHECK_TEXT_VIEW);
 //        map.put("WebView使用", WebViewActivity.class);
 //        map.put("Web页面显示", WebActivity.class);
         return map;

@@ -1,8 +1,9 @@
 package com.xunayuan.demo.adapter;
 
-import android.databinding.DataBindingUtil;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.databinding.DataBindingUtil;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,18 +39,15 @@ public class InspectAdapter extends RecyclerView.Adapter<InspectAdapter.UserAdap
     @Override
     public void onBindViewHolder(@NonNull UserAdapterHolder holder, int position) {
         holder.getBinding().setClassName(beans.get(position));
-        holder.getBinding().setAdapter(this);
         holder.getBinding().setPosition(position);
+        holder.binding.executePendingBindings();
+        holder.itemView.setOnClickListener(v -> onItemClickListener.onItemClick(beans.get(position)));
     }
 
+    private OnItemClickListener<String> onItemClickListener;
 
-    public void onItem(View view) {
-        Log.i("2222222222224444444444", "点击了项目内容");
-    }
-
-    // 点击功能
-    public void onItemClick(View view, int position) {
-        Log.i("2222222222224444444444", "点击了项目内容==" + position);
+    public void setOnItemClickListener(OnItemClickListener<String> onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
     }
 
     @Override
@@ -67,7 +65,6 @@ public class InspectAdapter extends RecyclerView.Adapter<InspectAdapter.UserAdap
             super(binding.getRoot());
             this.binding = binding;
         }
-
         ItemAdapterInspectBinding getBinding() {
             return binding;
         }

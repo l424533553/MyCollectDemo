@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:bind="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-
-        <variable
-            name="onItemClickListener22"
-            type="com.xunayuan.demo.adapter.OnItemClickListener" />
 
         <variable
             name="adapter"
@@ -24,7 +19,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@{position%2==0 ? @color/transparent : @color/color_add2345}"
         android:orientation="horizontal"
         android:padding="10dp">
 
@@ -32,27 +26,17 @@
              1. android:onClick="@{adapter.onItem}"
              2. android:onClick="@{adapter::onItem}"
                android:onClick="@{(theview) -> mainPrecenter.getMyName(theview,user)}"
+               android:onClick="@{(theview) -> adapter.onItemClick(theview,position)}"
+                 android:background="@{position%2==0 ? @color/transparent : @color/color_add2345}"
              -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:onClick="@{(theview) -> adapter.onItemClick(theview,position)}"
             android:paddingStart="20dp"
-
             android:paddingEnd="20dp"
             android:text="@{className}"
             android:textColor="@color/black"
             android:textSize="30sp" />
-<!--
-        <include
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            bind:userinclude:
-            >
-
-
-        </include>-->
-
     </LinearLayout>
 </layout>

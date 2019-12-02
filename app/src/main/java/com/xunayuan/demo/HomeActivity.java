@@ -1,23 +1,29 @@
 package com.xunayuan.demo;
 
-import android.databinding.DataBindingUtil;
-import android.databinding.ObservableArrayList;
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ObservableArrayList;
+
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+
 import android.view.View;
 
 import com.xuanyuan.library.MyToast;
 import com.xuanyuan.library.adapter.AdvertiseLinearLayoutManager;
 import com.xuanyuan.library.base.activity.MyAppCompatActivity;
 import com.xunayuan.demo.adapter.InspectAdapter;
+import com.xunayuan.demo.adapter.OnItemClickListener;
 import com.xunayuan.demo.data.HomeData;
 import com.xunayuan.demo.databinding.ActivityHomeBinding;
 
 import java.util.Map;
 
-
-public class HomeActivity extends MyAppCompatActivity {
-
+/**
+ * 数据功能，测试环境
+ */
+public class HomeActivity extends MyAppCompatActivity implements OnItemClickListener<String> {
     private ObservableArrayList<String> data = new ObservableArrayList<>();
     Map<String, Class> map;
 
@@ -28,25 +34,13 @@ public class HomeActivity extends MyAppCompatActivity {
             data.addAll(map.keySet());
         }
 
-
         AdvertiseLinearLayoutManager linearLayoutManager = new AdvertiseLinearLayoutManager(context);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         binding.homeList.setLayoutManager(linearLayoutManager);
 
         InspectAdapter adapter = new InspectAdapter(data);
+        adapter.setOnItemClickListener(this);
         binding.homeList.setAdapter(adapter);
-
-
-//        listView.setAdapter(adapter);
-//        listView.setOnItemClickListener(this);
-
-    }
-
-
-    public  void onItem(View view){
-
-        MyToast.toastShort(this,"点击了项目内容");
-
     }
 
     private ActivityHomeBinding binding;
@@ -55,21 +49,25 @@ public class HomeActivity extends MyAppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home);
-//        setContentView(R.layout.activity_home);
-
-
         initData();
 
-        // 数据功能功能  开发测试
-        // 测试消息栏通知的 帮助类
-//        NotificationHelpter notificationHelpter = new NotificationHelpter(this);
-//        notificationHelpter.createNotification(this, "test_id");
-
+//      NotificationHelpter notificationHelpter = new NotificationHelpter(this);
+//      notificationHelpter.createNotification(this, "test_id");
     }
 
     @Override
     protected String[] getPermissionsArray() {
         return new String[0];
+    }
+
+    @Override
+    public void onItemClick(String s) {
+        Intent intent = new Intent();
+        Class classT = map.get(s);
+        if (classT != null) {
+            intent.setClass(this, classT);
+            startActivity(intent);
+        }
     }
 
 

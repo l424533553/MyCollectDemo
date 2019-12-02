@@ -6,7 +6,7 @@ import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.SystemClock;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -15,7 +15,7 @@ import com.xunayuan.demo.aspect.entity.BehaviorTrace;
 
 public class AspectJActivity extends AppCompatActivity implements View.OnClickListener {
 
-    String  TAG=getClass().getName();
+    String TAG = getClass().getName();
     private int count;
     //创建ServiceConnection的匿名类
     private ServiceConnection connection = new ServiceConnection() {
@@ -44,6 +44,7 @@ public class AspectJActivity extends AppCompatActivity implements View.OnClickLi
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
             is4 = unbindService.isAttachedToWindow();
         }
+        //点击事件
         boolean is5 = unbindService.isClickable();
         boolean is6 = unbindService.isCursorVisible();
         boolean is7 = unbindService.isDirty();    // 不一样
@@ -92,12 +93,14 @@ public class AspectJActivity extends AppCompatActivity implements View.OnClickLi
                         " as11=" + as11);
     }
 
-    Button unbindService;
-    Button test;
+    private Button unbindService;
+    private Button test;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
         unbindService = findViewById(R.id.unbindService);
         test = findViewById(R.id.test);
@@ -137,10 +140,11 @@ public class AspectJActivity extends AppCompatActivity implements View.OnClickLi
         gv.setAdapter(digitalAdapter);*/
 
 //        gv.setOnItemClickListener();
-
     }
 
-
+    /**
+     * @param v 视图控件
+     */
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -151,7 +155,6 @@ public class AspectJActivity extends AppCompatActivity implements View.OnClickLi
                 //调用startService()方法-传入Intent对象,以此启动服务
                 startService(startIntent);
                 break;
-
             //点击停止Service
             case R.id.stopService:
                 //构建停止服务的Intent对象
@@ -197,6 +200,7 @@ public class AspectJActivity extends AppCompatActivity implements View.OnClickLi
         startActivity(intent);
         Log.i("11111", "after  jump2Test() ");
     }
+
     private void jump2Test2() {
         Log.i("11111", "before  jump2Test() ");
         Intent intent = new Intent(this, TestActivity.class);
@@ -239,6 +243,14 @@ public class AspectJActivity extends AppCompatActivity implements View.OnClickLi
     private void test() {
         System.out.println("使用 功能 测试");
     }
+
+
+
+
+
+
+
+
 
 }
 

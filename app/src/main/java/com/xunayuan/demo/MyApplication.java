@@ -1,4 +1,10 @@
 package com.xunayuan.demo;
+
+import android.content.Context;
+
+import androidx.multidex.MultiDex;
+
+import com.xuanyuan.arrlibrary.room.RoomHelper;
 import com.xuanyuan.library.base.application.MyBaseApplication;
 
 /**
@@ -10,8 +16,25 @@ import com.xuanyuan.library.base.application.MyBaseApplication;
 public class MyApplication extends MyBaseApplication {
 
     @Override
+    protected void attachBaseContext(Context base) {
+        MultiDex.install(this);
+        super.attachBaseContext(base);
+    }
+
+    /**
+     * Room 数据库
+     */
+    private RoomHelper roomHelper;
+
+    public RoomHelper getRoomHelper() {
+        return roomHelper;
+    }
+
+
+    @Override
     public void onCreate() {
         super.onCreate();
+        roomHelper = new RoomHelper();
     }
 
 

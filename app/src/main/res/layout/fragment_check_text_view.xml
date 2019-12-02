@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="listener"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".MainActivity">
+
+
+        <CheckedTextView
+            android:id="@+id/checkbox1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="测试" />
+
+
+        <!--  android:filterTouchesWhenObscured="true"//所在窗口被其它可见窗口遮住时,是否过滤触摸事件-->
+        <!--  android:focusableInTouchMode="true"//定义是否可以通过touch获取到焦点   -->
+        <CheckedTextView
+            android:id="@+id/checkbox2"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="#999999"
+            android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+            android:filterTouchesWhenObscured="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center_vertical"
+            android:onClick="@{listener}"
+            android:paddingLeft="26dp"
+            android:paddingRight="26dp"
+            android:text="张三"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp" />
+
+        <CheckedTextView
+            android:id="@+id/checkbox3"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="#999999"
+            android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+            android:filterTouchesWhenObscured="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center_vertical"
+            android:onClick="@{listener}"
+            android:paddingLeft="26dp"
+            android:paddingRight="26dp"
+            android:text="张三"
+            android:textColor="@color/blue"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tvCheckCount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btnTest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{listener}"
+            android:text="广播发送信息" />
+
+    </LinearLayout>
+
+</layout>

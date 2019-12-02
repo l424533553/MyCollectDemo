@@ -2,7 +2,7 @@ package com.xunayuan.demo
 
 import android.os.Bundle
 import android.os.PersistableBundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 
 /**
  * 作者：罗发新
@@ -11,7 +11,6 @@ import android.support.v7.app.AppCompatActivity
  * 说明：
  */
 class  HomeActivity2: AppCompatActivity() {
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
